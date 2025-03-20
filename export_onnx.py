@@ -177,8 +177,6 @@ def export(ckpt_path, onnx_path):
             },
             opset_version=17
         )
-        onnx_model, check = onnxsim.simplify(onnx_path, include_subgraph=True)
-        assert check, 'Simplified ONNX model could not be validated'
         onnx_model = onnxslim.slim(
             onnx_model, 
             no_shape_infer=False, 
